@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>整页滚动+下拉刷新</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.css">
+		<link rel="stylesheet" type="text/css" href="css/pullToRefresh.min.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">整页滚动+下拉刷新</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					第1行
+				</li>
+				<li class="mui-table-view-cell">
+					第2行
+				</li>
+				<li class="mui-table-view-cell">
+					第3行
+				</li>
+				<li class="mui-table-view-cell">
+					第4行
+				</li>
+				<li class="mui-table-view-cell">
+					第5行
+				</li>
+				<li class="mui-table-view-cell">
+					第6行
+				</li>
+				<li class="mui-table-view-cell">
+					第7行
+				</li>
+				<li class="mui-table-view-cell">
+					第8行
+				</li>
+				<li class="mui-table-view-cell">
+					第9行
+				</li>
+				<li class="mui-table-view-cell">
+					第10行
+				</li>
+				<li class="mui-table-view-cell">
+					第11行
+				</li>
+				<li class="mui-table-view-cell">
+					第12行
+				</li>
+				<li class="mui-table-view-cell">
+					第13行
+				</li>
+				<li class="mui-table-view-cell">
+					第14行
+				</li>
+				<li class="mui-table-view-cell">
+					第15行
+				</li>
+				<li class="mui-table-view-cell">
+					第16行
+				</li>
+				<li class="mui-table-view-cell">
+					第17行
+				</li>
+				<li class="mui-table-view-cell">
+					第18行
+				</li>
+				<li class="mui-table-view-cell">
+					第19行
+				</li>
+				<li class="mui-table-view-cell">
+					第20行
+				</li>
+			</ul>
+		</div>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/pullToRefresh.js"></script>
+		<script>
+			var refresh = new Refresh('.mui-content');
+			//设置上拉加载更多的状态
+			refresh.pullToLoadMore.type = 'start';
+			//下拉刷新
+			refresh.onPullToRefresh = function() {
+				var self = this;
+				setTimeout(function() {
+					//设置下拉加载状态
+					self.pullToRefresh.type = 'start';
+					//设置上拉加载更多的状态
+					refresh.pullToLoadMore.type = 'start';
+				}, 2000);
+			}
+
+			//上拉加载
+			refresh.onPullToLoadMore = function() {
+				setTimeout(function() {
+					//设置上拉加载更多的状态
+					refresh.pullToLoadMore.type = 'end';
+				}, 3000);
+			}
+		</script>
+	</body>
+
+</html>

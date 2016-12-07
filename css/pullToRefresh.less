@@ -1,0 +1,75 @@
+/*基于iscroll的上拉加载下拉刷新
+ * 依赖mui.css
+ * */
+//插入文字
+.before(@text:'') {
+	&:before {
+		content: @text;
+	}
+}
+.fullPage-refresh {
+	@h: 44px;
+	@line-h: 24px;
+	position: absolute;
+	height: @h;
+	width: 100%;
+	text-align: center;
+	color: #888888;
+	font-size: 14px;
+	padding: 10px 0;
+	-webkit-transform: translateY(-100%);
+	>.mui-spinner {
+		display: none;
+	}
+	>.text {
+		display: inline-block;
+		line-height: 24px;
+		vertical-align: top;
+	}
+	&.start {
+		>.text {
+			.before('下拉可以刷新');
+		}
+	}
+	&.loading {
+		// position: inherit;
+		>.mui-icon {
+			display: none;
+		}
+		>.mui-spinner {
+			display: inline-block;
+		}
+		>.text {
+			.before('正在刷新');
+		}
+	}
+	&.end {
+		>.mui-icon {
+			&.mui-icon-pulldown {
+				-webkit-transform: scaleY(-1);
+			}
+		}
+		>.text {
+			.before('松开立即刷新');
+		}
+	}
+}
+.fullPage-loadMore {
+	@h: 44px;
+	text-align: center;
+	color: #888888;
+	font-size: 14px;
+	line-height: @h;
+	&.none {
+		.before('没有数据');
+	}
+	&.start {
+		.before('上拉加载更多');
+	}
+	&.loading {
+		.before('加载中...');
+	}
+	&.end {
+		.before('没有更多数据了');
+	}
+}
