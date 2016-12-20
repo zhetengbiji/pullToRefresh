@@ -30,3 +30,20 @@ refresh.onPullToRefresh = function() {}
 ```
 refresh.onPullToLoadMore = function() {}
 ```
+###滚动到（只支持y轴滚动）
+```
+refresh.scrollTo(x,y,t);//x:x轴位置，y：y轴位置(不带单位)，t，滚动的总时间（毫秒）
+```
+###其他事件方法
+* 监听事件：on
+* 取消监听：off
+###on方法支持的事件列表
+* beforeScrollStart 滚动开始前
+* scrollStart 滚动开始
+* scroll 滚动中
+* scrollEnd滚动结束
+```
+refresh.on('scroll',function(){
+  console.log('滚动中');
+});
+```
